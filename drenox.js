@@ -3233,7 +3233,7 @@ case 'speed': {
   const start = process.hrtime();
   await reply('Testing...');
   const [s, ns] = process.hrtime(start);
-  reply(`𝐃𝐀፝֟͠𝐑𝐊: ${((s * 1e9 + ns) / 1e6).toFixed(2)} ms`);
+  reply(`*𝐃𝐀፝֟͠𝐑𝐊 ☇ꜱᴩᷨᴇͦᴇͭᴅ ☁: ${((s * 1e9 + ns) / 1e6).toFixed(2)} MS*`);
 }
 break;
 
@@ -6396,7 +6396,7 @@ case 'song': {
         contextInfo: {
           externalAdReply: {
             title: result.title || video.title,
-            body: result.author?.channelTitle || video.author?.name || 'YouTube Audio',
+            body: result.author?.channelTitle || video.author?.name || '●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*',
             thumbnailUrl: result.thumbnail || video.thumbnail,
             sourceUrl: video.url,
             mediaType: 1,
