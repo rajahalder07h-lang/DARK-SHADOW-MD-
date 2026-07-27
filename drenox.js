@@ -6414,7 +6414,7 @@ case 'song': {
         contextInfo: {
           externalAdReply: {
             title: result.title || video.title,
-            body: result.author?.channelTitle || video.author?.name || ,
+            body: result.author?.channelTitle || video.author?.name || '',
             thumbnailUrl: result.thumbnail || video.thumbnail,
             sourceUrl: video.url,
             mediaType: 1,
