@@ -5,7 +5,6 @@ cmd({
   on: "body" // Listens to all messages
 }, async (conn, m, store, { from, body, sender, isGroup, isAdmins, isBotAdmins, reply }) => {
   try {
-    if (!global.warnings) global.warnings = {};
     if (!isGroup || isAdmins || !isBotAdmins || config.ANTI_LINK !== 'true') return;
 
     const linkPatterns = [
@@ -15,19 +14,19 @@ cmd({
 
     if (linkPatterns.some(pattern => pattern.test(body))) {
       try {
+        // Delete the message
         await conn.sendMessage(from, { delete: m.key });
       } catch (e) { console.log("Failed to delete:", e); }
 
-      global.warnings[sender] = (global.warnings[sender] || 0) + 1;
-      
-      if (global.warnings[sender] >= 3) {
+      // Direct kick — no warning, no count
+      try {
         await conn.groupParticipantsUpdate(from, [sender], "remove");
-        delete global.warnings[sender];
-      } else {
         await conn.sendMessage(from, {
-          text: `⚠️ *Warning ${global.warnings[sender]}/3*\n@${sender.split('@')[0]}, links are not allowed!`,
+          text: `🚫 @${sender.split('@')[0]} has been kicked for sending a link!\n\n⚠️ Links are not allowed in this group.`,
           mentions: [sender]
         });
+      } catch (e) {
+        console.log("Failed to kick:", e);
       }
     }
   } catch (error) {
