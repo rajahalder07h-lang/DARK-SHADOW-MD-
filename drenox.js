@@ -6356,6 +6356,7 @@ break;
 // ══════════════════════════════════════════════════════════
    
 case 'play':
+case 'gan' :
 case 'song': {
   if (!text) return reply(`🎵 Provide a song name`)
 
@@ -6389,12 +6390,12 @@ case 'song': {
     await bad.sendMessage(
       m.chat,
       {
-        text: `\`\`\`🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${result.title || video.title}...\`\`\``,
+        text: `\`\`\`🎧 𝑺𝒆𝒂𝒓𝒄𝒉𝒊𝒏𝒈 𝑩𝒚 ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀🤍: ${𝒓𝒆𝒔𝒖𝒍𝒕.𝒕𝒊𝒕𝒍𝒆 || 𝒗𝒊𝒅𝒆𝒐.𝒕𝒊𝒕𝒍𝒆}... \`\`\``,
         contextInfo: {
           externalAdReply: {
-            title: `🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${result.title || video.title}`,
+            title: `●⃝𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫🤍`,
             body: `Contact: ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃`,
-            thumbnailUrl: result.thumbnail || video.thumbnail,
+            thumbnailUrl: ,
             sourceUrl: video.url,
             mediaType: 1,
             renderLargerThumbnail: false
