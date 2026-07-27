@@ -1,7 +1,7 @@
 {
-  "name": "shadow-md",
+  "name": "𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫",
   "version": "2.0.0",
-  "description": "Powerful whatsapp bot created by shadow",
+  "description": "Powerful whatsapp bot created by ●⃝ᴅᴀ፝֟͠ʀᴋ 𝐑𝐀𝐉𝐀",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -17,7 +17,7 @@
     "multi-session",
     "pairing-bot"
   ],
-  "author": "shadow",
+  "author": "●⃝ᴅᴀ፝֟͠ʀᴋ 𝐑𝐀𝐉𝐀",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"
