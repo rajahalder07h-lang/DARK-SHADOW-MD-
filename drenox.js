@@ -6375,16 +6375,45 @@ case 'song': {
 
     const video = search.videos[0]
 
-    // 2️⃣ Updated API Call
-    const response = await axios.get(`https://rabbitapi.zone.id/api/song?url=${encodeURIComponent(video.url)}`)
-    
-    const resData = response.data
-    const result = resData.result || resData.data || resData
-    const downloadUrl = result.url || result.download || result.downloadUrl || result.link
+        // 2️⃣ Try multiple APIs (fallback system)
+    let downloadUrl = null
+    let result = null
+    let apiName = ''
+
+    // API 1: rabbitapi
+    try {
+      const response = await axios.get(`https://rabbitapi.zone.id/api/song?url=${encodeURIComponent(video.url)}`, { timeout: 20000 })
+      const data = response.data
+      if (data.success && data.result && (data.result.url || data.result.download || data.result.mp3 || data.result.audio)) {
+        result = data.result
+        downloadUrl = result.url || result.download || result.mp3 || result.audio
+        apiName = 'rabbitapi'
+      }
+    } catch (e) {
+      console.log('⚠️ rabbitapi failed, trying next API...')
+    }
+
+    // API 2: davidcyriltech (fallback)
+    if (!downloadUrl) {
+      try {
+        const response = await axios.get(`https://apis.davidcyriltech.my.id/download/ytmp3?url=${encodeURIComponent(video.url)}`, { timeout: 20000 })
+        const data = response.data
+        if (data.success && data.result && data.result.download_url) {
+          result = data.result
+          downloadUrl = data.result.download_url
+          apiName = 'davidcyriltech'
+        }
+      } catch (e) {
+        console.log('⚠️ davidcyriltech also failed')
+      }
+    }
 
     if (!downloadUrl) {
-      throw new Error('Download link not found')
+      await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
+      return reply('⚠️ Song download failed! Both APIs are down. Try again later.')
     }
+
+    console.log(`✅ Song found via ${apiName}: ${result.title}`)
 
     // 3️⃣ Send Preview Card First (like your screenshot)
     await bad.sendMessage(
@@ -6395,7 +6424,7 @@ case 'song': {
           externalAdReply: {
             title: `●⃝𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫🤍`,
             body: `Contact: ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃`,
-            thumbnailUrl: result.thumbnail || video.thumbnail,
+            thumbnailUrl: 'https://files.catbox.moe/yaprhi.jpeg',
             sourceUrl: video.url,
             mediaType: 1,
             renderLargerThumbnail: false
