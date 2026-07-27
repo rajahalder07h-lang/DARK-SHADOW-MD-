@@ -247,7 +247,7 @@ bot.onText(/\/pair(?:\s+(.+))?/, async (msg, match) => {
       `2. Go to Settings → Linked Devices\n` +
       `3. Tap "Link a Device"\n` +
       `4. Enter this code\n\n` +
-      `⚠️ *Code expires in 1 minutes*`
+      `⚠️ *Code expires in 1 minutes*`,
       {
         parse_mode: 'Markdown',
         reply_markup: {
