@@ -6377,7 +6377,6 @@ case 'song': {
     // 2️⃣ Updated API Call
     const response = await axios.get(`https://rabbitapi.zone.id/api/song?url=${encodeURIComponent(video.url)}`)
     
-    // Response থেকে ডাটা হ্যান্ডেল করা
     const resData = response.data
     const result = resData.result || resData.data || resData
     const downloadUrl = result.url || result.download || result.downloadUrl || result.link
@@ -6386,7 +6385,26 @@ case 'song': {
       throw new Error('Download link not found')
     }
 
-    // 3️⃣ Send Audio
+    // 3️⃣ Send Preview Card First (like your screenshot)
+    await bad.sendMessage(
+      m.chat,
+      {
+        text: `\`\`\`🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${result.title || video.title}...\`\`\``,
+        contextInfo: {
+          externalAdReply: {
+            title: `🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${result.title || video.title}`,
+            body: `Contact: ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃`,
+            thumbnailUrl: result.thumbnail || video.thumbnail,
+            sourceUrl: video.url,
+            mediaType: 1,
+            renderLargerThumbnail: false
+          }
+        }
+      },
+      { quoted: m }
+    )
+
+    // 4️⃣ Then send the actual Audio
     await bad.sendMessage(
       m.chat,
       {
@@ -6396,7 +6414,7 @@ case 'song': {
         contextInfo: {
           externalAdReply: {
             title: result.title || video.title,
-            body: result.author?.channelTitle || video.author?.name || '●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*',
+            body: result.author?.channelTitle || video.author?.name || ,
             thumbnailUrl: result.thumbnail || video.thumbnail,
             sourceUrl: video.url,
             mediaType: 1,
@@ -6416,6 +6434,7 @@ case 'song': {
   }
 }
 break
+  
 
       //═══════════════════════════════════════════════════════════
 // TIKTOK - Download TikTok Videos
