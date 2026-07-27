@@ -1,7 +1,7 @@
 const fs = require('fs')
 
 global.owner = "918509616141" //owner number
-global.footer = "༒︎𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫༒︎" //footer section
+global.footer = "༒︎𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫༒︎" //footer section
 global.status = false //"self/public" section of the bot
 global.prefa = ['','!','.','#','&','/','@']
 global.owner = ['234']
@@ -9,7 +9,7 @@ global.xprefix = '.'
 global.gambar = "https://i.postimg.cc/NMn8rzqh/image1.png"
 global.OWNER_NAME = "@Darkraja_Official" //
 global.DEVELOPER = ["6317857334"] //
-global.BOT_NAME = "☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎︎"
+global.BOT_NAME = "☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎︎"
 global.bankowner = "●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*𓆪 "
 global.creatorName = "ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃"
 global.ownernumber = '918509616141'  //creator number
@@ -21,12 +21,12 @@ global.adminmess = "☠️ 𖤐 𝐀𝐃𝐌𝐈𝐍 𝐑𝐄𝐒𝐓𝐑𝐈�
 global.premmess = "☠️ 𖤐 𝐑𝐄𝐒𝐓𝐑𝐈𝐂𝐓𝐄𝐃 𝐅𝐄𝐀𝐓𝐔𝐑𝐄 𖤐 ☠️  𖥂 𝐓𝐡𝐢𝐬 𝐟𝐞𝐚𝐭𝐮𝐫𝐞 𝐢𝐬 𝐫𝐞𝐬𝐞𝐫𝐯𝐞𝐝 𝐟𝐨𝐫 𝐩𝐫𝐞𝐦𝐢𝐮𝐦 𝐮𝐬𝐞𝐫𝐬 𝐨𝐧𝐥𝐲.  🕳️ 𝐔𝐩𝐠𝐫𝐚𝐝𝐞 𝐲𝐨𝐮𝐫 𝐫𝐚𝐧𝐤… 𝐨𝐫 𝐟𝐚𝐥𝐥 𝐢𝐧𝐭𝐨 𝐨𝐛𝐥𝐢𝐯𝐢𝐨𝐧."
 global.dev = "918509616141"
 global.creatorName = "ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃'"
-global.footer = "☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎" //footer section
+global.footer = "☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎" //footer section
 global.link = "https://whatsapp.com/channel/0029VbCtjrNEQIahN9FedJ2j"
 global.autobio = true//auto update bio
-global.botName = "☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎"
+global.botName = "☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎"
 global.version = "V2"
-global.botname = "☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎"
+global.botname = "☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎"
 global.author = "ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃"
 global.themeemoji = '🤞'
 global.wagc = 'https://whatsapp.com/channel/0029VbCtjrNEQIahN9FedJ2j'
@@ -43,11 +43,11 @@ global.onlyowner = `☠️ 𝙎𝙤𝙧𝙧𝙮, 𝙏𝙝𝙞𝙨 𝙁𝙚𝙖�
 global.database = `☠️ 𝙏𝙤 𝙗𝙚 𝙖𝙙𝙙𝙚𝙙 𝙩𝙤 𝙩𝙝𝙚 𝘿𝘼𝙏𝘼𝘽𝘼𝙎𝙀 𝘽𝘼𝙎𝙀...  
 🩸 𝘾𝙤𝙣𝙩𝙖𝙘𝙩 *ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃* — 𝙊𝙧 𝙗𝙚 𝙚𝙧𝙖𝙨𝙚𝙙 𝙗𝙮 𝙙𝙚𝙛𝙖𝙪𝙡𝙩.  🔗 *No entry without approval.*`
   global.mess = {
-wait: "```☠️ WAIT FOR  ☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎😈 ⚡ *Darkness intensifies...*  💀 *Brace yourself — The SHADOW is rising.*```",
-   success: "✔️ 𝗦𝗨𝗖𝗖𝗘𝗦𝗦 𝗕𝗬 ☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎ ⚔️`  🔥 *Mission complete. The Void accepts your command.*",
-   on: "`✔️☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎𝗔𝗖𝗧𝗜𝗩𝗘 ⚔️`  🔥 *The SHADOW is unleashed. Power running at full force.*  🕳️ *Enter if you dare.*", 
-   prem: "`⛧ PREMIUM ACCESS ONLY ⛧`  🩸 *This feature is restricted to premium users.*  📲 *Add your number to the database to unlock the dark tier.*  🕳️ *No entry without clearance. The SHADOW does not negotiate.*", 
-   off: "`❌ ☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎𝗣𝗢𝗪𝗘𝗥𝗘𝗗 𝗢𝗙𝗙 ⚰️`  🕳️ *The SHADOW has gone dark. All systems offline.*  ⚡ *Recharge and prepare for the next awakening.*",
+wait: "```☠️ WAIT FOR  ☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎😈 ⚡ *Darkness intensifies...*  💀 *Brace yourself — The 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 is rising.*```",
+   success: "✔️ 𝗦𝗨𝗖𝗖𝗘𝗦𝗦 𝗕𝗬 ☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎ ⚔️`  🔥 *Mission complete. The Void accepts your command.*",
+   on: "`✔️☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎𝗔𝗖𝗧𝗜𝗩𝗘 ⚔️`  🔥 *The 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 is unleashed. Power running at full force.*  🕳️ *Enter if you dare.*", 
+   prem: "`⛧ PREMIUM ACCESS ONLY ⛧`  🩸 *This feature is restricted to premium users.*  📲 *Add your number to the database to unlock the dark tier.*  🕳️ *No entry without clearance. The 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 does not negotiate.*", 
+   off: "`❌ ☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎𝗣𝗢𝗪𝗘𝗥𝗘𝗗 𝗢𝗙𝗙 ⚰️`  🕳️ *The 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 has gone dark. All systems offline.*  ⚡ *Recharge and prepare for the next awakening.*",
    query: {
        text: "Where's the text, man?",
        link: "Where's the link, bro?",
@@ -86,7 +86,7 @@ global.database = `\`[ 👑 ] ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃\` \
 🕷️ 𝖙𝖌: t.me/Darkraja_Official
 💀 𝖜𝖆 𝖈𝖍𝖆𝖓𝖓𝖊𝖑: https://whatsapp.com/channel/0029VbCtjrNEQIahN9FedJ2j
 
-𝕋𝕙𝕒𝕟𝕜𝕤 𝕗𝕠𝕣 𝕌𝕤𝕚𝕟𝕘  ☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎`
+𝕋𝕙𝕒𝕟𝕜𝕤 𝕗𝕠𝕣 𝕌𝕤𝕚𝕟𝕘  ☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎`
 
 global.hituet = 0
 //false=disable and true=enable
