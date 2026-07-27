@@ -737,7 +737,7 @@ async function startpairing(kingbadboiNumber) {
                     }
                 }
                 
-                console.log(chalk.green.bold(`🎉 𓆩 ☠︎︎ 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎online: ${kingbadboiNumber}`));
+                console.log(chalk.green.bold(`🎉 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎online: ${kingbadboiNumber}`));
                 console.log(chalk.cyan(`📰 Newsletter auto-react is ACTIVE`));
                 console.log(chalk.cyan(`💓 Keep-alive running (silent mode)`));
                 console.log(chalk.green(`✅ All commands are functional!`));
