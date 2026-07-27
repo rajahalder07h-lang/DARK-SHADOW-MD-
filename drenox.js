@@ -6395,7 +6395,7 @@ case 'song': {
           externalAdReply: {
             title: `●⃝𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫🤍`,
             body: `Contact: ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃`,
-            thumbnailUrl: 'https://i.ibb.co/hpmNHNx/goku-artistic-fusion-legacy-7b.jpg',
+            thumbnailUrl: result.thumbnail || video.thumbnail,
             sourceUrl: video.url,
             mediaType: 1,
             renderLargerThumbnail: false
