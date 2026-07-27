@@ -156,7 +156,7 @@ bot.onText(/\/start/, async (msg) => {
     chatId,
     "https://i.postimg.cc/NMn8rzqh/image1.png",
     {
-      caption: `🪀 *𝙏𝙝𝙚 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫💀*\n\n╔════════════════════╗\n ⤷ /pair <wa_number>\n ⤷ /unpair <wa_number>\n╚════════════════════╝`,
+      caption: `🪀 *𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫*\n\n╔════════════════════╗\n ⤷ /pair <wa_number>\n ⤷ /unpair <wa_number>\n\n   𝑷𝒐𝒘𝒆𝒓𝒆𝒅 𝑩𝒚 ●⃝ᴅᴀ፝֟͠ʀᴋ 𝐑𝐀𝐉𝐀𓂃🤍\n╚════════════════════╝`,
       parse_mode: 'Markdown',
       reply_markup: {
         inline_keyboard: [
@@ -247,7 +247,7 @@ bot.onText(/\/pair(?:\s+(.+))?/, async (msg, match) => {
       `2. Go to Settings → Linked Devices\n` +
       `3. Tap "Link a Device"\n` +
       `4. Enter this code\n\n` +
-      `⚠️ *Code expires in 2 minutes*`,
+      `⚠️ *Code expires in 1 minutes*`
       {
         parse_mode: 'Markdown',
         reply_markup: {
