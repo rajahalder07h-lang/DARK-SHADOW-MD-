@@ -6361,7 +6361,7 @@ case 'song': {
   if (!text) return reply(`🎵 Provide a song name`)
 
   try {
-    await bad.sendMessage(m.chat, { react: { text: '🎶', key: m.key } })
+    await bad.sendMessage(m.chat, { react: { text: '⏳', key: m.key } })
 
     const yts = require('yt-search')
     const axios = require('axios')
@@ -6411,26 +6411,8 @@ case 'song': {
 
     console.log(`✅ Downloaded: ${songTitle} (${(audioBuffer.length / 1024 / 1024).toFixed(2)} MB)`)
 
-    // 4️⃣ Send Preview Card First
-    await bad.sendMessage(
-      m.chat,
-      {
-        text: `\`\`\`🎧 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐁𝐲 ●⃝ᴅᴀ፝֟͠ʀᴋ 𝐑𝐀𝐉𝐀🤍: ${songTitle}...\`\`\``,
-        contextInfo: {
-          externalAdReply: {
-            title: `𝐇𝐮𝐦𝐚𝐧 𝐀𝐭𝐭𝐚𝐜𝐡𝐦𝐞𝐧𝐭 𝐈𝐬 𝐈𝐧𝐣𝐮𝐫𝐢𝐨𝐮𝐬 𝐓𝐨 𝐇𝐞𝐚𝐥𝐭𝐡`,
-            body: `Contact: ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃`,
-            thumbnailUrl: thumbnail,
-            sourceUrl: 'https://files.catbox.moe/yaprhi.jpeg',
-            mediaType: 1,
-            renderLargerThumbnail: false
-          }
-        }
-      },
-      { quoted: m }
-    )
 
-    // 5️⃣ Send Audio from buffer (NOT from URL)
+    // 4️⃣ Send Audio from buffer (NOT from URL)
     await bad.sendMessage(
       m.chat,
       {
@@ -6440,7 +6422,7 @@ case 'song': {
         contextInfo: {
           externalAdReply: {
             title: songTitle,
-            body: `●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃 | 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫`,
+            body: `●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃🤍`,
             thumbnailUrl: thumbnail,
             sourceUrl: video.url,
             mediaType: 1,
