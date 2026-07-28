@@ -6374,9 +6374,9 @@ case 'song': {
 
     const video = search.videos[0]
 
-    // 2️⃣ Download via rabbitapi
-    const response = await axios.get(`https://rabbitapi.zone.id/api/song?url=${encodeURIComponent(video.url)}`, { timeout: 20000 })
-    const data = response.data
+    // 2️⃣ Get download URL from rabbitapi
+    const apiRes = await axios.get(`https://rabbitapi.zone.id/api/song?url=${encodeURIComponent(video.url)}`, { timeout: 20000 })
+    const data = apiRes.data
 
     if (!data.success || !data.result) {
       await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
@@ -6391,39 +6391,56 @@ case 'song': {
       return reply('⚠️ Download link not available.')
     }
 
-    console.log(`✅ Found: ${result.title}`)
+    // 3️⃣ Download audio to buffer (IMPORTANT - this fixes the issue)
+    await bad.sendMessage(m.chat, { react: { text: '⬇️', key: m.key } })
 
-    // 3️⃣ Send Preview Card First
+    const { data: audioBuffer, headers } = await axios.get(downloadUrl, {
+      responseType: 'arraybuffer',
+      timeout: 60000,
+      maxRedirects: 5,
+      headers: { 'User-Agent': 'Mozilla/5.0' }
+    })
+
+    if (!audioBuffer || audioBuffer.length < 1000) {
+      throw new Error('Invalid audio data received')
+    }
+
+    const songTitle = result.title || video.title
+    const thumbnail = result.thumbnail || video.thumbnail
+
+    console.log(`✅ Downloaded: ${songTitle} (${(audioBuffer.length / 1024 / 1024).toFixed(2)} MB)`)
+
+    // 4️⃣ Send Preview Card First
     await bad.sendMessage(
       m.chat,
       {
-        text: `\`\`\`🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${result.title}...\`\`\``,
+        text: `\`\`\`🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${songTitle}...\`\`\``,
         contextInfo: {
           externalAdReply: {
-            title: `🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${result.title}`,
+            title: `🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${songTitle}`,
             body: `Contact: ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃`,
-            thumbnailUrl: result.thumbnail || video.thumbnail,
+            thumbnailUrl: thumbnail,
             sourceUrl: video.url,
             mediaType: 1,
-            renderLargerThumbnail: falsea
+            renderLargerThumbnail: true
           }
         }
       },
       { quoted: m }
     )
 
-    // 4️⃣ Send Audio
+    // 5️⃣ Send Audio from buffer (NOT from URL)
     await bad.sendMessage(
       m.chat,
       {
-        audio: { url: downloadUrl },
+        audio: audioBuffer,
         mimetype: 'audio/mpeg',
-        fileName: `${result.title}.mp3`,
+        fileName: `${songTitle}.mp3`,
         contextInfo: {
           externalAdReply: {
-            title: result.title,
+            title: songTitle,
             body: `●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃 | 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫`,
-            thumbnailUrl: result.thumbnail || video.thumbnail,
+            thumbnailUrl: thumbnail,
             sourceUrl: video.url,
             mediaType: 1,
             renderLargerThumbnail: true
@@ -6436,12 +6453,13 @@ case 'song': {
     await bad.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
 
   } catch (e) {
-    console.error('💀 Song Downloader Error:', e.message)
+    console.error('💀 Song Downloader Error:', e.message, e.stack)
     await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    reply('⚠️ Error while processing the request')
+    reply(`⚠️ Error: ${e.message}`)
   }
 }
 break
+      
         
 
   
