@@ -6356,7 +6356,6 @@ break;
 // ══════════════════════════════════════════════════════════
    
 case 'play':
-case 'gan' :
 case 'song': {
   if (!text) return reply(`🎵 Provide a song name`)
 
@@ -6375,76 +6374,55 @@ case 'song': {
 
     const video = search.videos[0]
 
-        // 2️⃣ Try multiple APIs (fallback system)
-    let downloadUrl = null
-    let result = null
-    let apiName = ''
+    // 2️⃣ Download via rabbitapi
+    const response = await axios.get(`https://rabbitapi.zone.id/api/song?url=${encodeURIComponent(video.url)}`, { timeout: 20000 })
+    const data = response.data
 
-    // API 1: rabbitapi
-    try {
-      const response = await axios.get(`https://rabbitapi.zone.id/api/song?url=${encodeURIComponent(video.url)}`, { timeout: 20000 })
-      const data = response.data
-      if (data.success && data.result && (data.result.url || data.result.download || data.result.mp3 || data.result.audio)) {
-        result = data.result
-        downloadUrl = result.url || result.download || result.mp3 || result.audio
-        apiName = 'rabbitapi'
-      }
-    } catch (e) {
-      console.log('⚠️ rabbitapi failed, trying next API...')
+    if (!data.success || !data.result) {
+      await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
+      return reply('⚠️ Failed to get download link. Try again.')
     }
 
-    // API 2: davidcyriltech (fallback)
-    if (!downloadUrl) {
-      try {
-        const response = await axios.get(`https://apis.davidcyriltech.my.id/download/ytmp3?url=${encodeURIComponent(video.url)}`, { timeout: 20000 })
-        const data = response.data
-        if (data.success && data.result && data.result.download_url) {
-          result = data.result
-          downloadUrl = data.result.download_url
-          apiName = 'davidcyriltech'
-        }
-      } catch (e) {
-        console.log('⚠️ davidcyriltech also failed')
-      }
-    }
+    const result = data.result
+    const downloadUrl = result.url || result.download || result.mp3 || result.audio
 
     if (!downloadUrl) {
       await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-      return reply('⚠️ Song download failed! Both APIs are down. Try again later.')
+      return reply('⚠️ Download link not available.')
     }
 
-    console.log(`✅ Song found via ${apiName}: ${result.title}`)
+    console.log(`✅ Found: ${result.title}`)
 
-    // 3️⃣ Send Preview Card First (like your screenshot)
+    // 3️⃣ Send Preview Card First
     await bad.sendMessage(
       m.chat,
       {
-        text: `\`\`\`🎧 𝑺𝒆𝒂𝒓𝒄𝒉𝒊𝒏𝒈 𝑩𝒚 ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀🤍: ${𝒓𝒆𝒔𝒖𝒍𝒕.𝒕𝒊𝒕𝒍𝒆 || 𝒗𝒊𝒅𝒆𝒐.𝒕𝒊𝒕𝒍𝒆}... \`\`\``,
+        text: `\`\`\`🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${result.title}...\`\`\``,
         contextInfo: {
           externalAdReply: {
-            title: `●⃝𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫🤍`,
+            title: `🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${result.title}`,
             body: `Contact: ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃`,
-            thumbnailUrl: 'https://files.catbox.moe/yaprhi.jpeg',
+            thumbnailUrl: result.thumbnail || video.thumbnail,
             sourceUrl: video.url,
             mediaType: 1,
-            renderLargerThumbnail: false
+            renderLargerThumbnail: falsea
           }
         }
       },
       { quoted: m }
     )
 
-    // 4️⃣ Then send the actual Audio
+    // 4️⃣ Send Audio
     await bad.sendMessage(
       m.chat,
       {
         audio: { url: downloadUrl },
         mimetype: 'audio/mpeg',
-        fileName: `${result.title || video.title}.mp3`,
+        fileName: `${result.title}.mp3`,
         contextInfo: {
           externalAdReply: {
-            title: result.title || video.title,
-            body: result.author?.channelTitle || video.author?.name || 'unknown',
+            title: result.title,
+            body: `●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃 | 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫`,
             thumbnailUrl: result.thumbnail || video.thumbnail,
             sourceUrl: video.url,
             mediaType: 1,
@@ -6458,12 +6436,14 @@ case 'song': {
     await bad.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
 
   } catch (e) {
-    console.error('Song Downloader Error:', e.message)
+    console.error('💀 Song Downloader Error:', e.message)
     await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
     reply('⚠️ Error while processing the request')
   }
 }
 break
+        
+
   
 
       //═══════════════════════════════════════════════════════════
