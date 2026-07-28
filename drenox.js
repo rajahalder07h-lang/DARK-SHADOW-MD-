@@ -6358,7 +6358,7 @@ break;
 case 'play':
 case 'gan':
 case 'song': {
-  if (!text) return reply(`🎵 Provide a song name \n example:tere liye`)
+  if (!text) return reply(`🎵 Provide a song name`)
 
   try {
     await bad.sendMessage(m.chat, { react: { text: '🎶', key: m.key } })
@@ -6415,7 +6415,7 @@ case 'song': {
     await bad.sendMessage(
       m.chat,
       {
-        text: `\`\`\`🎧 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐁𝐲 ●⃝ᴅᴀ፝֟͠ʀᴋ 𝐑𝐀𝐉𝐀🤍: ${𝒔𝒐𝒏𝒈𝑻𝒊𝒕𝒍𝒆}...\`\`\``,
+        text: `\`\`\`🎧 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐁𝐲 ●⃝ᴅᴀ፝֟͠ʀᴋ 𝐑𝐀𝐉𝐀🤍: ${songTitle}...\`\`\``,
         contextInfo: {
           externalAdReply: {
             title: `𝐇𝐮𝐦𝐚𝐧 𝐀𝐭𝐭𝐚𝐜𝐡𝐦𝐞𝐧𝐭 𝐈𝐬 𝐈𝐧𝐣𝐮𝐫𝐢𝐨𝐮𝐬 𝐓𝐨 𝐇𝐞𝐚𝐥𝐭𝐡`,
