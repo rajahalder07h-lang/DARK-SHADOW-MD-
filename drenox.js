@@ -6356,8 +6356,9 @@ break;
 // ══════════════════════════════════════════════════════════
    
 case 'play':
+case 'gan':
 case 'song': {
-  if (!text) return reply(`🎵 Provide a song name`)
+  if (!text) return reply(`🎵 Provide a song name \n example:tere liye`)
 
   try {
     await bad.sendMessage(m.chat, { react: { text: '🎶', key: m.key } })
@@ -6414,15 +6415,15 @@ case 'song': {
     await bad.sendMessage(
       m.chat,
       {
-        text: `\`\`\`🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${songTitle}...\`\`\``,
+        text: `\`\`\`🎧 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐁𝐲 ●⃝ᴅᴀ፝֟͠ʀᴋ 𝐑𝐀𝐉𝐀🤍: ${𝒔𝒐𝒏𝒈𝑻𝒊𝒕𝒍𝒆}...\`\`\``,
         contextInfo: {
           externalAdReply: {
-            title: `🎧 Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃: ${songTitle}`,
+            title: `𝐇𝐮𝐦𝐚𝐧 𝐀𝐭𝐭𝐚𝐜𝐡𝐦𝐞𝐧𝐭 𝐈𝐬 𝐈𝐧𝐣𝐮𝐫𝐢𝐨𝐮𝐬 𝐓𝐨 𝐇𝐞𝐚𝐥𝐭𝐡`,
             body: `Contact: ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃`,
             thumbnailUrl: thumbnail,
-            sourceUrl: video.url,
+            sourceUrl: 'https://files.catbox.moe/yaprhi.jpeg',
             mediaType: 1,
-            renderLargerThumbnail: true
+            renderLargerThumbnail: false
           }
         }
       },
