@@ -855,8 +855,7 @@ if (global.autobio) {
         "╭━━〔 ☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎ 〕━━┈⊷\n┃✮│ ▰▰▱▱▱▱▱▱▱▱ 25%\n┃✮│ 🔌 ᴄᴏɴɴᴇᴄᴛɪɴɢ...\n╰━━━━━━━━━━━━━━┈⊷",
         "╭━━〔 to⸸ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ⸸〕━━┈⊷\n┃✮│ ▰▰▰▰▰▱▱▱▱▱ 50%\n┃✮│ 📦 ʟᴏᴀᴅɪɴɢ...\n╰━━━━━━━━━━━━━━┈⊷",
         "╭━━〔 𖤐 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 𖤐〕━━┈⊷\n┃✮│ ▰▰▰▰▰▰▰▱▱▱ 75%\n┃✮│ ⚙️ ᴘʀᴏᴄᴇssɪɴɢ...\n╰━━━━━━━━━━━━━━┈⊷",
-        "╭━━〔 ⟦ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ⟧ 〕━━┈⊷\n┃✮│ ▰▰▰▰▰▰▰▰▰▰ 100%\n┃✮│ ✅ sʏsᴛᴇᴍ ʀᴇᴀᴅʏ!\n╰━━━━━━━━━━━━━━┈⊷"
-     { quoted: fakeContactQuoted }
+        "╭━━〔 ⟦ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ⟧ 〕━━┈⊷\n┃✮│ ▰▰▰▰▰▰▰▰▰▰ 100%\n┃✮│ ✅ sʏsᴛᴇᴍ ʀᴇᴀᴅʏ!\n╰━━━━━━━━━━━━━━┈⊷
       ]
       
       try {
@@ -1893,7 +1892,6 @@ case 'menu2': {
       audio: _audio,
       mimetype: 'audio/mpeg',
       ptt: false
-      { quoted: fakeContactQuoted }
     
     }, { quoted: m })
   }
@@ -2935,7 +2933,7 @@ case 'private': {
   } catch (e) {}
 
   reply('✅ Private mode ON')
-  { quoted: fakeContactQuoted }
+  
   
 }
 break
@@ -2952,7 +2950,7 @@ case 'public': {
   } catch (e) {}
 
   reply('✅ Publiç mode ON')
-  { quoted: fakeContactQuoted }
+  
   
 }
 break
