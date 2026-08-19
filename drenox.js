@@ -1968,7 +1968,7 @@ case 'listmenu': {
       audio: _audio,
       mimetype: 'audio/mpeg',
       ptt: false
-      { quoted: fakeContactQuoted }
+      
     
     }, { quoted: m })
   }
