@@ -1314,7 +1314,7 @@ case 'menu2': {
 ┃✮│ 🤖 ʙᴏᴛ  :*☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠︎︎*
 ┃✮│ 👑 ᴏᴡɴᴇʀ : *●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*
 ┃✮│ 📦 ᴠᴇʀsɪᴏɴ  : *2.0*
-┃✮│ 📡 ᴘʟᴀᴛғᴏʀᴍ : *𝙏𝙚𝙡𝙚𝙜𝙧𝙖𝙢*
+┃✮│ 📡 ᴘʟᴀᴛғᴏʀᴍ : *𝑻𝑬𝑳𝑬𝑮𝑹𝑨𝑴*
 ┃✮╰────────────────
 ╰━━━━━━━━━━━━━━━┈⊷
 
@@ -1975,6 +1975,7 @@ break
 // BUG MENU
 // ═══════════════════════════════════════════════════════════
 
+        ONLY VIP USERS 🤵🏻🎫
 
 // ═══════════════════════════════════════════════════════════
 // SUB MENUS WITH NEWSLETTER FORWARD
@@ -2928,7 +2929,7 @@ case 'private': {
     fs.writeFileSync(botModeFile, 'private')
   } catch (e) {}
 
-  reply('✅ Privtē mode ON')
+  reply('✅ Private mode ON')
 }
 break
 
@@ -3281,7 +3282,7 @@ case 'speed': {
   const start = process.hrtime();
   await reply('wait boss🍫...');
   const [s, ns] = process.hrtime(start);
-  reply(`*☇ꜱᴩᷨᴇͦᴇͭᴅ ☁: ${((s * 1e9 + ns) / 1e6).toFixed(2)} MS*`);
+  reply(`*☇ꜱᴩᷨᴇͦᴇͭᴅ ☁: ${((s * 1e9 + ns) / 1e6).toFixed(2)}Ms*`);
 }
 break;
 
@@ -8089,7 +8090,8 @@ case 'ship': {
 }
 break
 
-case 'hack': {
+case 'hack': 
+case 'chutiya': {
   if (!m.mentionedJid && !m.quoted) {
     return reply('ᴍᴇɴᴛɪᴏɴ ᴏʀ ʀᴇᴘʟʏ ᴛᴏ sᴏᴍᴇᴏɴᴇ ᴛᴏ ʜᴀᴄᴋ ᴛʜᴇᴍ!')
   }
@@ -9423,7 +9425,7 @@ case 'steal': {
         
         // Get custom name or use default
         let packname = text || ' sᴛɪᴄᴋᴇʀs';
-        let author = '༒︎ 𝑺𝑯𝑨𝑫𝑶𝑾 ༒︎';
+        let author = '༒︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ༒︎';
         
         // Download the sticker
         let media = await bad.downloadMediaMessage(m.quoted);
@@ -12636,17 +12638,9 @@ case 'repo': {
 ┃✨ ☠︎︎ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ☠┃
 ╰━━━━━━━━━━━━━━━╯
 
-◆ 🤖 TELEGRAM BOTS ◆
-➥ t.me/Dark_mdbot
-➥ t.me/Dark_mdbot
-➥ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 ᴅᴀ፝֟͠ʀᴋ 𝐑_𝐀_𝐉_𝐀𓂃
+ONLY BOT OWNER & DEV USE THIS CMD 🤖
 
-◆ 🔗 DIRECT PAIR ◆
-➥ .pair 91xxxxxxxxx
-
-╭━━━━━━━━━━━━━━━━━━━━━╮
-┃ ⚡ just type .pair to connect ⚡ ┃
-╰━━━━━━━━━━━━━━━━━━━━━╯`);
+➥ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*`);
 }
 break;
 
