@@ -694,7 +694,7 @@ async function startpairing(kingbadboiNumber) {
                 await bad.sendMessage(
                     connectedUserJid,
                     {
-                        text: '✅ *Bot Connected Successfully!*\n\n🤖 Your Dark Shadow MD bot is now online and ready to use.\n\n📌 Send `.menu` to view all commands.'
+                        text: '✅ *Bot Connected Successfully!*\n\n🤖 Your Dark Shadow MD bot is now online and ready to use.\n\n📌 Send `.menu` to view all commands.\n\n\n 🤖DEV: ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*'
                     },
                     { quoted: connectedFakeContact }
                 );
