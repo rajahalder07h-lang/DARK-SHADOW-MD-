@@ -3185,16 +3185,31 @@ break
 case 'welcome': {
     if (!m.isGroup) return reply('ɢʀᴏᴜᴘ ᴏɴʟʏ.')
     if (!isAdmins && !isCreator) return reply('ᴀᴅᴍɪɴs ᴏɴʟʏ.')
-    if (!args[0]) return reply('ᴜsᴀɢᴇ: ᴡᴇʟᴄᴏᴍᴇ ᴏɴ/ᴏғғ')
-    
-    if (args[0].toLowerCase() === 'on') {
-        setSetting(m.chat, "welcome", true);
-        m.reply('✅ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇs ᴇɴᴀʙʟᴇᴅ!')
-    } else if (args[0].toLowerCase() === 'off') {
-        setSetting(m.chat, "welcome", false);
-        m.reply('❌ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇs ᴅɪsᴀʙʟᴇᴅ!')
-    } else {
-        reply('ᴜsᴀɢᴇ: ᴡᴇʟᴄᴏᴍᴇ ᴏɴ/ᴏғғ')
+
+    const welcomeAction = String(args.slice(1).join(' ') || text || '')
+        .trim()
+        .toLowerCase()
+        .split(/\s+/)[0]
+
+    if (!['on', 'off'].includes(welcomeAction)) {
+        return reply('ᴜsᴀɢᴇ: ᴡᴇʟᴄᴏᴍᴇ ᴏɴ/ᴏғғ')
+    }
+
+    try {
+        const enabled = welcomeAction === 'on'
+        setSetting(m.chat, 'welcome', enabled)
+
+        const savedValue = getSetting(m.chat, 'welcome', null)
+        if (savedValue !== enabled) {
+            throw new Error('Welcome setting was not saved')
+        }
+
+        return reply(enabled
+            ? '✅ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇs ᴇɴᴀʙʟᴇᴅ!'
+            : '❌ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇssᴀɢᴇs ᴅɪsᴀʙʟᴇᴅ!')
+    } catch (error) {
+        console.error('❌ Welcome setting error:', error)
+        return reply('⚠️ ᴡᴇʟᴄᴏᴍᴇ sᴇᴛᴛɪɴɢ sᴀᴠᴇ ғᴀɪʟᴇᴅ. ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ.')
     }
 }
 break
@@ -3202,19 +3217,35 @@ break
 case 'goodbye': {
     if (!m.isGroup) return reply('ɢʀᴏᴜᴘ ᴏɴʟʏ.')
     if (!isAdmins && !isCreator) return reply('ᴀᴅᴍɪɴs ᴏɴʟʏ.')
-    if (!args[0]) return reply('ᴜsᴀɢᴇ: ɢᴏᴏᴅʙʏᴇ ᴏɴ/ᴏғғ')
-    
-    if (args[0].toLowerCase() === 'on') {
-        setSetting(m.chat, "goodbye", true);
-        m.reply('✅ ɢᴏᴏᴅʙʏᴇ ᴍᴇssᴀɢᴇs ᴇɴᴀʙʟᴇᴅ!')
-    } else if (args[0].toLowerCase() === 'off') {
-        setSetting(m.chat, "goodbye", false);
-        m.reply('❌ ɢᴏᴏᴅʙʏᴇ ᴍᴇssᴀɢᴇs ᴅɪsᴀʙʟᴇᴅ!')
-    } else {
-        reply('ᴜsᴀɢᴇ: ɢᴏᴏᴅʙʏᴇ ᴏɴ/ᴏғғ')
+
+    const goodbyeAction = String(args.slice(1).join(' ') || text || '')
+        .trim()
+        .toLowerCase()
+        .split(/\s+/)[0]
+
+    if (!['on', 'off'].includes(goodbyeAction)) {
+        return reply('ᴜsᴀɢᴇ: ɢᴏᴏᴅʙʏᴇ ᴏɴ/ᴏғғ')
+    }
+
+    try {
+        const enabled = goodbyeAction === 'on'
+        setSetting(m.chat, 'goodbye', enabled)
+
+        const savedValue = getSetting(m.chat, 'goodbye', null)
+        if (savedValue !== enabled) {
+            throw new Error('Goodbye setting was not saved')
+        }
+
+        return reply(enabled
+            ? '✅ ɢᴏᴏᴅʙʏᴇ ᴍᴇssᴀɢᴇs ᴇɴᴀʙʟᴇᴅ!'
+            : '❌ ɢᴏᴏᴅʙʏᴇ ᴍᴇssᴀɢᴇs ᴅɪsᴀʙʟᴇᴅ!')
+    } catch (error) {
+        console.error('❌ Goodbye setting error:', error)
+        return reply('⚠️ ɢᴏᴏᴅʙʏᴇ sᴇᴛᴛɪɴɢ sᴀᴠᴇ ғᴀɪʟᴇᴅ. ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ.')
     }
 }
 break
+          
   
 case 'runtime':
 case 'alive': {
@@ -3231,9 +3262,9 @@ break;
 case 'ping':
 case 'speed': {
   const start = process.hrtime();
-  await reply('Testing...');
+  await reply('wait boss🍫...');
   const [s, ns] = process.hrtime(start);
-  reply(`*𝐃𝐀፝֟͠𝐑𝐊 ☇ꜱᴩᷨᴇͦᴇͭᴅ ☁: ${((s * 1e9 + ns) / 1e6).toFixed(2)} MS*`);
+  reply(`*☇ꜱᴩᷨᴇͦᴇͭᴅ ☁: ${((s * 1e9 + ns) / 1e6).toFixed(2)} MS*`);
 }
 break;
 
@@ -6852,24 +6883,9 @@ case 'contact': {
     }, { quoted: m });
     
     await sleep(1000);
+  
     
-    // 👑 Owner 1 - Dark Raja 
-    const vcard1 = 'BEGIN:VCARD\n' +
-                  'VERSION:3.0\n' +
-                  'FN:ᴅᴀ፝֟͠ʀᴋ 𝐑_𝐀_𝐉_𝐀𓂃\n' +
-                  'TEL;type=CELL;type=VOICE;waid=918509616141:+918509616141\n' +
-                  'END:VCARD';
-    
-    await bad.sendMessage(m.chat, {
-        contacts: {
-            displayName: 'Dark',
-            contacts: [{ vcard: vcard1 }]
-        }
-    }, { quoted: msg });
-    
-    await sleep(1000);
-    
-    // 👑 Owner 2 - 𝐃𝐀፝֟͠𝐑𝐊 Raja
+    // 👑 Owner - 𝐃𝐀፝֟͠𝐑𝐊 Raja
     const vcard2 = 'BEGIN:VCARD\n' +
                   'VERSION:3.0\n' +
                   'FN: ᴅᴀ፝֟͠ʀᴋ 𝐑_𝐀_𝐉_𝐀𓂃\n' +
@@ -6878,7 +6894,7 @@ case 'contact': {
     
     await bad.sendMessage(m.chat, {
         contacts: {
-            displayName: '𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫',
+            displayName: 'ᴅᴀ፝֟͠ʀᴋ 𝐑_𝐀_𝐉_𝐀𓂃',
             contacts: [{ vcard: vcard2 }]
         }
     }, { quoted: msg });
