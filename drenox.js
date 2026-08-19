@@ -3279,7 +3279,7 @@ case 'alive': {
 `🟢 *Bot Status:* ONLINE
 👑 *Owner:*●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*
 ⏱️ *Uptime:* ${uptime}`
-    { quoted: fakeContactQuoted }
+  
   
   );
 }
@@ -3302,7 +3302,7 @@ case 'speed': {
   await bad.sendMessage(
     m.chat,
     {
-      text: `*☇ꜱᴩᷨᴇͦᴇͭᴅ ☁:${speedMs} Ms*`
+      text: `*☇ꜱᴩᷨᴇͦᴇͭᴅ ☁:${speedMs}Ms🍫*`
     },
     { quoted: fakeContactQuoted }
   );
