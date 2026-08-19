@@ -3280,11 +3280,26 @@ break;
 case 'ping':
 case 'speed': {
   const start = process.hrtime();
-  await reply('wait boss🍫...');
+
+  await bad.sendMessage(
+    m.chat,
+    { text: 'wait boss🍫...' },
+    { quoted: fakeContactQuoted }
+  );
+
   const [s, ns] = process.hrtime(start);
-  reply(`*☇ꜱᴩᷨᴇͦᴇͭᴅ ☁: ${((s * 1e9 + ns) / 1e6).toFixed(2)}Ms*`);
+  const speedMs = ((s * 1e9 + ns) / 1e6).toFixed(2);
+
+  await bad.sendMessage(
+    m.chat,
+    {
+      text: `*𝐃𝐀፝֟͠𝐑𝐊 ☇ꜱᴩᷨᴇͦᴇͭᴅ ☁: ${speedMs} MS*`
+    },
+    { quoted: fakeContactQuoted }
+  );
 }
 break;
+        
 
 
 case 'getpp': {
@@ -6455,7 +6470,7 @@ case 'sona': {
     await bad.sendMessage(
       m.chat,
       {
-        text: `🎧 *Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*\n\n🔎 Query: ${text.trim()}\n⏳ Please wait...`
+        text: `🎧 *Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*\n: ${text.trim()}\n⏳ Please wait...`
       },
       { quoted: fakeContactQuoted }
     );
