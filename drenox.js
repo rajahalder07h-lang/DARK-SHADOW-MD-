@@ -105,6 +105,23 @@ if (!global.antiDeleteDM) global.antiDeleteDM = false
 // ═══════════════════════════════════════════════════════════
 const NEWSLETTER_JID = '120363428519137659@newsletter'
 
+
+// Global fake contact quote used for command responses.
+const commandVcard = 'BEGIN:VCARD\nVERSION:3.0\nFN:●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*\nORG:Dark Raja Bot;\nTEL;type=CELL;type=VOICE;waid=918509616141:+91 85096 16141\nEND:VCARD';
+const fakeContactQuoted = {
+  key: {
+    fromMe: false,
+    participant: '0@s.whatsapp.net',
+    remoteJid: 'status@broadcast'
+  },
+  message: {
+    contactMessage: {
+      displayName: '●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*',
+      vcard: commandVcard
+    }
+  }
+};
+
 const welcomeMessages = [
   '👋 ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ DARK ɢᴄ! ᴇɴᴊᴏʏ ʏᴏᴜʀ sᴛᴀʏ 💀',
   '🎉 ғʀᴇsʜ ʙʟᴏᴏᴅ ɪɴ ᴛʜᴇ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ᴅᴇɴ! 😎',
