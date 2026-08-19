@@ -856,6 +856,7 @@ if (global.autobio) {
         "╭━━〔 to⸸ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ⸸〕━━┈⊷\n┃✮│ ▰▰▰▰▰▱▱▱▱▱ 50%\n┃✮│ 📦 ʟᴏᴀᴅɪɴɢ...\n╰━━━━━━━━━━━━━━┈⊷",
         "╭━━〔 𖤐 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 𖤐〕━━┈⊷\n┃✮│ ▰▰▰▰▰▰▰▱▱▱ 75%\n┃✮│ ⚙️ ᴘʀᴏᴄᴇssɪɴɢ...\n╰━━━━━━━━━━━━━━┈⊷",
         "╭━━〔 ⟦ 𝐃𝐚𝐫𝐤 𝑺𝒉𝒂𝒅𝒐𝒘 𝑴𝑫 ⟧ 〕━━┈⊷\n┃✮│ ▰▰▰▰▰▰▰▰▰▰ 100%\n┃✮│ ✅ sʏsᴛᴇᴍ ʀᴇᴀᴅʏ!\n╰━━━━━━━━━━━━━━┈⊷"
+     { quoted: fakeContactQuoted }
       ]
       
       try {
@@ -1892,6 +1893,8 @@ case 'menu2': {
       audio: _audio,
       mimetype: 'audio/mpeg',
       ptt: false
+      { quoted: fakeContactQuoted }
+    
     }, { quoted: m })
   }
 }
@@ -1967,6 +1970,8 @@ case 'listmenu': {
       audio: _audio,
       mimetype: 'audio/mpeg',
       ptt: false
+      { quoted: fakeContactQuoted }
+    
     }, { quoted: m })
   }
 }
@@ -2930,6 +2935,8 @@ case 'private': {
   } catch (e) {}
 
   reply('✅ Private mode ON')
+  { quoted: fakeContactQuoted }
+  
 }
 break
 
@@ -2945,6 +2952,8 @@ case 'public': {
   } catch (e) {}
 
   reply('✅ Publiç mode ON')
+  { quoted: fakeContactQuoted }
+  
 }
 break
 
@@ -3272,6 +3281,8 @@ case 'alive': {
 `🟢 *Bot Status:* ONLINE
 👑 *Owner:*●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*
 ⏱️ *Uptime:* ${uptime}`
+    { quoted: fakeContactQuoted }
+  
   );
 }
 break;
@@ -3293,7 +3304,7 @@ case 'speed': {
   await bad.sendMessage(
     m.chat,
     {
-      text: `*𝐃𝐀፝֟͠𝐑𝐊 ☇ꜱᴩᷨᴇͦᴇͭᴅ ☁: ${speedMs} MS*`
+      text: `*☇ꜱᴩᷨᴇͦᴇͭᴅ ☁:${speedMs} Ms*`
     },
     { quoted: fakeContactQuoted }
   );
