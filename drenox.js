@@ -6354,94 +6354,151 @@ break;
 // ═══════════════════════════════════════════════════════════
 // PLAY - YouTube Audio Search & Download
 // ══════════════════════════════════════════════════════════
-   
-case 'play':
+  case 'play':
 case 'gan':
-case 'song': {
-  if (!text) return reply(`🎵 Provide a song name`)
+case 'sona': {
+  if (!text || !text.trim()) {
+    return reply('🎵 Provide a song name');
+  }
+
+  const axios = require('axios');
+  const yts = require('yt-search');
+
+  // Fake contact/vCard branding
+  const vcard = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'FN:●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*',
+    'ORG:Dark Raja Bot;',
+    'TEL;type=CELL;type=VOICE;waid=918509616141:+91 85096 16141',
+    'END:VCARD'
+  ].join('\n');
+
+  const fakeContactQuoted = {
+    key: {
+      fromMe: false,
+      participant: '0@s.whatsapp.net',
+      remoteJid: 'status@broadcast'
+    },
+    message: {
+      contactMessage: {
+        displayName: '●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*',
+        vcard
+      }
+    }
+  };
+
+  // Common error-safe reaction helper
+  const react = async (emoji) => {
+    try {
+      await bad.sendMessage(m.chat, {
+        react: { text: emoji, key: m.key }
+      });
+    } catch (reactionError) {
+      console.error('Reaction error:', reactionError.message);
+    }
+  };
 
   try {
-    await bad.sendMessage(m.chat, { react: { text: '⏳', key: m.key } })
+    await react('⏳');
 
-    const yts = require('yt-search')
-    const axios = require('axios')
+    // Search message আগে পাঠানো হবে এবং vCard quote থাকবে
+    await bad.sendMessage(
+      m.chat,
+      {
+        text: `🎧 *Searching By ●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃*\n\n🔎 Query: ${text.trim()}\n⏳ Please wait...`
+      },
+      { quoted: fakeContactQuoted }
+    );
 
-    // 1️⃣ YouTube Search
-    const search = await yts(text)
-    if (!search.videos.length) {
-      await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-      return reply('❌ No results found')
+    const search = await yts(text.trim());
+
+    if (!search || !Array.isArray(search.videos) || !search.videos.length) {
+      await react('❌');
+      return reply('❌ No results found');
     }
 
-    const video = search.videos[0]
+    const video = search.videos[0];
 
-    // 2️⃣ Get download URL from rabbitapi
-    const apiRes = await axios.get(`https://rabbitapi.zone.id/api/song?url=${encodeURIComponent(video.url)}`, { timeout: 20000 })
-    const data = apiRes.data
+    // RabbitAPI থেকে download URL নেওয়া
+    const apiRes = await axios.get(
+      `https://rabbitapi.zone.id/api/song?url=${encodeURIComponent(video.url)}`,
+      {
+        timeout: 20000,
+        headers: { 'User-Agent': 'Mozilla/5.0' }
+      }
+    );
+
+    const data = apiRes.data || {};
+    const result = data.result || {};
 
     if (!data.success || !data.result) {
-      await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-      return reply('⚠️ Failed to get download link. Try again.')
+      await react('❌');
+      return reply('⚠️ Failed to get download link. Try again.');
     }
 
-    const result = data.result
-    const downloadUrl = result.url || result.download || result.mp3 || result.audio
+    const downloadUrl =
+      result.url ||
+      result.download ||
+      result.mp3 ||
+      result.audio ||
+      result.downloadUrl ||
+      result.link ||
+      (typeof result === 'string' ? result : null);
 
-    if (!downloadUrl) {
-      await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-      return reply('⚠️ Download link not available.')
+    if (!downloadUrl || typeof downloadUrl !== 'string') {
+      await react('❌');
+      return reply('⚠️ Download link not available.');
     }
 
-    // 3️⃣ Download audio to buffer (IMPORTANT - this fixes the issue)
-    await bad.sendMessage(m.chat, { react: { text: '⬇️', key: m.key } })
+    await react('⬇️');
 
-    const { data: audioBuffer, headers } = await axios.get(downloadUrl, {
+    // URL থেকে buffer download করা হচ্ছে
+    const audioResponse = await axios.get(downloadUrl, {
       responseType: 'arraybuffer',
       timeout: 60000,
       maxRedirects: 5,
-      headers: { 'User-Agent': 'Mozilla/5.0' }
-    })
+      headers: { 'User-Agent': 'Mozilla/5.0' },
+      validateStatus: (status) => status >= 200 && status < 400
+    });
+
+    const audioBuffer = Buffer.from(audioResponse.data);
 
     if (!audioBuffer || audioBuffer.length < 1000) {
-      throw new Error('Invalid audio data received')
+      throw new Error('Invalid audio data received');
     }
 
-    const songTitle = result.title || video.title
-    const thumbnail = result.thumbnail || video.thumbnail
+    const rawTitle = result.title || video.title || 'Dark Raja Song';
+    const songTitle = String(rawTitle)
+      .replace(/[\\/:*?"<>|]/g, '')
+      .trim()
+      .slice(0, 100) || 'Dark Raja Song';
 
-    console.log(`✅ Downloaded: ${songTitle} (${(audioBuffer.length / 1024 / 1024).toFixed(2)} MB)`)
+    console.log(
+      `✅ Downloaded: ${songTitle} (${(audioBuffer.length / 1024 / 1024).toFixed(2)} MB)`
+    );
 
-
-    // 4️⃣ Send Audio from buffer (NOT from URL)
+    // Thumbnail বাদ দেওয়া হয়েছে; audio vCard quote করে পাঠানো হবে
     await bad.sendMessage(
       m.chat,
       {
         audio: audioBuffer,
         mimetype: 'audio/mpeg',
         fileName: `${songTitle}.mp3`,
-        contextInfo: {
-          externalAdReply: {
-            title: songTitle,
-            body: `●⃝ᴅᴀ፝֟͠ʀᴋ ✿ 𝐑_𝐀_𝐉_𝐀𓂃🤍`,
-            thumbnailUrl: thumbnail,
-            sourceUrl: video.url,
-            mediaType: 1,
-            renderLargerThumbnail: true
-          }
-        }
+        ptt: false
       },
-      { quoted: m }
-    )
+      { quoted: fakeContactQuoted }
+    );
 
-    await bad.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
-
+    await react('✅');
   } catch (e) {
-    console.error('💀 Song Downloader Error:', e.message, e.stack)
-    await bad.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    reply(`⚠️ Error: ${e.message}`)
+    console.error('💀 Song Downloader Error:', e.message, e.stack);
+    await react('❌');
+    return reply(`⚠️ Error: ${e.message || 'Something went wrong ❌'}`);
   }
 }
-break
+break;
+        
       
         
 
